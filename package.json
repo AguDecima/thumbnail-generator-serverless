@@ -1,0 +1,24 @@
+{
+  "name": "thumbnail-generator-serverless",
+  "version": "1.0.0",
+  "description": "## Goal Build a simple API that generates thumbnails from a source image",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AguDecima/thumbnail-generator-serverless.git"
+  },
+  "author": "Agustin Decima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AguDecima/thumbnail-generator-serverless/issues"
+  },
+  "homepage": "https://github.com/AguDecima/thumbnail-generator-serverless#readme",
+  "keywords": [
+    "sls"
+  ],
+  "devDependencies": {
+    "serverless-iam-roles-per-function": "^3.2.0"
+  }
+}

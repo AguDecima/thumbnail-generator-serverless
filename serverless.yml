@@ -1,0 +1,32 @@
+service: thumbnail-generator
+frameworkVersion: '3'
+
+custom:
+  stackPrefix: ${self:service}-${self:provider.stage}
+  provisionedConcurrency:
+    prod: 2
+  config: ${file(config/index.js)}
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  architecture: arm64
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'devevelop'}
+  tags:
+    project: thumbnail-generator
+  tracing:
+    lambda: true
+    apiGateway: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - xray:PutTraceSegments
+        - xray:PutTelemetryRecords
+      Resource: '*'
+
+functions:
+  - ${file(src/generator/index.yml)}
+
+plugins:
+  - serverless-iam-roles-per-function

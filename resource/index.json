@@ -1,0 +1,5 @@
+{
+    "generator": {
+        "uploadImageLambdaName": "${self:custom.stackPrefix}-upload-imageLambda"
+    }
+}

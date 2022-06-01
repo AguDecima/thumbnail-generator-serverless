@@ -1,0 +1,11 @@
+uploadImage:
+    handler: src/generator/handler/uploadImage.handler
+    name: ${file(resource/index.json):generator.uploadImageLambdaName}
+    description: 'receive an image and save to s3'
+    iamRoleStatementsInherit: true
+    iamRoleStatementsName: ${self:service}-${self:provider.stage}-upload-image
+    provisionedConcurrency: ${self:custom.provisionedConcurrency.${self:provider.stage}, 0}
+    events:
+      - httpApi:
+          path: /
+          method: post
