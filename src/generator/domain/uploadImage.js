@@ -1,13 +1,22 @@
-module.exports = async (event) => {
+const { uploadImage } = require('../service/bucketService');
+const { validateImageAllowed } = require('../util/validation');
+
+module.exports = async (body, context) => {
+
+  try {
+    validateImageAllowed(body.contentType, context.headers['content-length'])
     return {
-        statusCode: 200,
-        body: JSON.stringify(
-          {
-            message: "Go Serverless v3.0! Your function executed successfully!",
-            input: event,
-          },
-          null,
-          2
-        ),
-      };
+      statusCode: 200,
+      body: JSON.stringify(body)
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        error: error.message
+      })
+    };
+  }
+
 };

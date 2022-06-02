@@ -7,5 +7,5 @@ uploadImage:
     provisionedConcurrency: ${self:custom.provisionedConcurrency.${self:provider.stage}, 0}
     events:
       - httpApi:
-          path: /
+          path: /upload
           method: post

@@ -1,5 +1,6 @@
 {
     "generator": {
-        "uploadImageLambdaName": "${self:custom.stackPrefix}-upload-imageLambda"
+        "uploadImageLambdaName": "${self:custom.stackPrefix}-upload-image",
+        "sourceBucketName":  "${self:custom.stackPrefix}-source"
     }
 }

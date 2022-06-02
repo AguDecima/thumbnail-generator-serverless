@@ -1,0 +1,6 @@
+Resources:
+  SourceBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${file(resource/index.json):generator.sourceBucketName}
+      AccessControl: PublicRead
