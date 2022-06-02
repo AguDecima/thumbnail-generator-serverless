@@ -1,32 +1,20 @@
 const { uploadImage } = require('../service/originSourceService');
 const { validateImageAllowed } = require('../util/validation');
+const { Responses } = require('../../common/response');
 
 module.exports = async (body, context) => {
 
   try {
     validateImageAllowed(body.contentType, context.headers['content-length'])
 
-    const response = await uploadImage(
+    await uploadImage(
       body.content,
       body.filename,
       body.contentType)
-    console.log("RESPONSE", response);
-    return {
-      statusCode: 200,
-      headers: { "content-type": "text/json" },
-      body: JSON.stringify({
-        message: "Image uploaded"
-      })
-    };
+
+    return Responses._200({ message: "Image Uploaded" })
   } catch (error) {
     console.log("ERROR", JSON.stringify(error));
-    return {
-      statusCode: error.code,
-      headers: { "content-type": "text/json" },
-      body: JSON.stringify({
-        error: error.message
-      })
-    };
-  }
-
+    return Responses._Custom({ message: error.message }, error.code)
+  };
 };

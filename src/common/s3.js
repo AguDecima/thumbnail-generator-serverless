@@ -13,7 +13,7 @@ const S3 = {
         const newData = await s3Client.putObject(params).promise();
 
         if (!newData) {
-            throw Error('there was an error writing the file');
+            throw { code: 400, message: "there was an error writing the file" }
         }
 
         return newData;
