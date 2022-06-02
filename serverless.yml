@@ -31,15 +31,14 @@ package:
   patterns:
     - '!.git/**'
     - '!.serverless/**'
-    - '!node_modules/**'
-    - 'node_modules/aws-sdk/**'
 
 functions:
   - ${file(src/generator/index.yml)}
 
 resources:
   #S3
-  - ${file(resource/s3/source.yml)}
+  - ${file(resource/s3/originSource.yml)}
+  - ${file(resource/s3/resizedSource.yml)}
 
 plugins:
   - serverless-iam-roles-per-function

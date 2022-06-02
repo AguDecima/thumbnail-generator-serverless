@@ -1,0 +1,5 @@
+Resources:
+  ResizedSourceBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${file(resource/index.json):generator.resizedSourceBucketName}

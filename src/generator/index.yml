@@ -8,4 +8,12 @@ uploadImage:
     events:
       - httpApi:
           path: /upload
-          method: post
+          method: POST
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - "s3:Put*"
+        Resource:
+          - !Join [ "/", [!GetAtt OriginSourceBucket.Arn, "*"]]
+    environment:
+      SOURCE_BUCKET: !Ref OriginSourceBucket
