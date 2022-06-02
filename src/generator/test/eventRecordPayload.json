@@ -1,0 +1,38 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "2022-06-02T20:35:46.065Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+                "principalId": "AVP8WZ1LZY8V8"
+            },
+            "requestParameters": {
+                "sourceIPAddress": "190.220.149.202"
+            },
+            "responseElements": {
+                "x-amz-request-id": "FDZ6B933TE6N7SNB",
+                "x-amz-id-2": "CY4PWBEtCXC0CCfS0dh5+DktcY+DyKGaQzd1atcDqzvu05tAtj9OVEHE7jGHoZgOySEcbPFUqmE8OaCSJKiONy5d8r0sr9Z6"
+            },
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "thumbnail-generator-develop-resize-image-68a737133cefb25bff959852b8f04754",
+                "bucket": {
+                    "name": "thumbnail-generator-develop-origin-source",
+                    "ownerIdentity": {
+                        "principalId": "AVP8WZ1LZY8V8"
+                    },
+                    "arn": "arn:aws:s3:::thumbnail-generator-develop-origin-source"
+                },
+                "object": {
+                    "key": "IMG_6090.jpeg",
+                    "size": 1426477,
+                    "eTag": "93e8c71fa7e914a1171f098950f2b586",
+                    "sequencer": "0062991F21F67605B7"
+                }
+            }
+        }
+    ]
+}

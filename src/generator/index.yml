@@ -17,3 +17,30 @@ uploadImage:
           - !Join [ "/", [!GetAtt OriginSourceBucket.Arn, "*"]]
     environment:
       SOURCE_BUCKET: !Ref OriginSourceBucket
+
+resizeImage:
+    handler: src/generator/handler/resizeImage.handler
+    name: ${file(resource/index.json):generator.resizeImageLambdaName}
+    description: 'resize an image and save to s3'
+    iamRoleStatementsInherit: true
+    iamRoleStatementsName: ${self:service}-${self:provider.stage}-resize-image
+    provisionedConcurrency: ${self:custom.provisionedConcurrency.${self:provider.stage}, 0}
+    events:
+      - s3:
+          bucket: !Ref OriginSourceBucket
+          event: s3:ObjectCreated:*
+          existing: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - "s3:Put*"
+        Resource:
+          - !Join [ "/", [!GetAtt ResizedSourceBucket.Arn, "*"]]
+      - Effect: Allow
+        Action:
+          - s3:GetObject
+          - s3:HeadObject
+        Resource:
+          - !Join [ "/", [!GetAtt OriginSourceBucket.Arn, "*"]]
+    environment:
+      RESIZE_SOURCE_BUCKET: !Ref ResizedSourceBucket

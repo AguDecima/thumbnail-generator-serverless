@@ -1,6 +1,6 @@
 const UploadImageDomain = require('../domain/uploadImage');
 const multipart = require('aws-lambda-multipart-parser');
-const { Responses } = require('../../common/response');
+const { Responses } = require('../../../common/response');
 
 module.exports.handler = async (event) => {
   // const handler = async (event) => {
