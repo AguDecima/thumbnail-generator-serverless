@@ -24,9 +24,25 @@ provider:
         - xray:PutTraceSegments
         - xray:PutTelemetryRecords
       Resource: '*'
+    
+package:
+  individually: false
+  excludeDevDependencies: true
+  patterns:
+    - '!.git/**'
+    - '!.serverless/**'
+    - '!node_modules/**'
+    - 'node_modules/aws-sdk/**'
 
 functions:
   - ${file(src/generator/index.yml)}
 
+resources:
+  #S3
+  - ${file(resource/s3/source.yml)}
+
 plugins:
   - serverless-iam-roles-per-function
+  - serverless-webpack
+  - serverless-offline
+
