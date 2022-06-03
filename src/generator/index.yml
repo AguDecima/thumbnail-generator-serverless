@@ -38,9 +38,10 @@ resizeImage:
           - !Join [ "/", [!GetAtt ResizedSourceBucket.Arn, "*"]]
       - Effect: Allow
         Action:
-          - s3:GetObject
-          - s3:HeadObject
+          - "s3:Get*"
+          - "s3:Head*"
         Resource:
           - !Join [ "/", [!GetAtt OriginSourceBucket.Arn, "*"]]
     environment:
       RESIZE_SOURCE_BUCKET: !Ref ResizedSourceBucket
+      SOURCE_BUCKET: !Ref OriginSourceBucket

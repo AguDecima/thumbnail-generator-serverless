@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "## Goal Build a simple API that generates thumbnails from a source image",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev" : "sls deploy --stage develop",
+    "offline": "sls offline --stage develop", 
+    "test": "jest --verbose --coverage --passWithNoTests"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,6 @@
   },
   "dependencies": {
     "aws-sdk": "^2.1147.0",
-    "file-type": "^17.1.2"
+    "jest": "^28.1.0"
   }
 }

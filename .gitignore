@@ -6,3 +6,6 @@ package-lock.json
 # Serverless directories
 .serverless
 .webpack
+
+#jest 
+coverage/*

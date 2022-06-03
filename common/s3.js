@@ -18,6 +18,24 @@ const S3 = {
 
         return newData;
     },
+    async getObject(key, bucket) {
+        const params = {
+            Bucket: bucket,
+            Key: key,
+        };
+
+        console.log("PARAMS", JSON.stringify(params));
+
+        const data = await s3Client.headObject(params).promise();
+
+        console.log("DATA", JSON.stringify(data));
+
+        if (!data) {
+            throw { code: 400, message: "there was an error getting the file" }
+        }
+
+        return data;
+    }
 };
 
 module.exports = {

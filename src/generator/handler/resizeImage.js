@@ -1,3 +1,5 @@
+const ResizeImageDomain = require('../domain/resizeImage');
+
 module.exports.handler = async (event) => { 
-    console.log("EVENT", JSON.stringify(event));    
+    return ResizeImageDomain(event.Records)    
 }
