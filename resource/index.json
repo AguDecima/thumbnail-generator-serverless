@@ -3,6 +3,8 @@
         "uploadImageLambdaName": "${self:custom.stackPrefix}-upload-image",
         "resizeImageLambdaName": "${self:custom.stackPrefix}-resize-image",
         "originSourceBucketName":  "${self:custom.stackPrefix}-origin-source",
-        "resizedSourceBucketName":  "${self:custom.stackPrefix}-resized-source"
+        "resizedSourceBucketName":  "${self:custom.stackPrefix}-resized-source",
+        "imageUploadedQueueName": "${self:custom.stackPrefix}-image-uploaded",
+        "objectCreatedSnsTopic": "${self:custom.stackPrefix}-object-created"
     }
 }

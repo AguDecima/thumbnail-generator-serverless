@@ -43,5 +43,5 @@ resizeImage:
         Resource:
           - !Join [ "/", [!GetAtt OriginSourceBucket.Arn, "*"]]
     environment:
-      RESIZE_SOURCE_BUCKET: !Ref ResizedSourceBucket
+      RESIZED_SOURCE_BUCKET: !Ref ResizedSourceBucket
       SOURCE_BUCKET: !Ref OriginSourceBucket

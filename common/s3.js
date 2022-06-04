@@ -12,9 +12,7 @@ const S3 = {
 
         const newData = await s3Client.putObject(params).promise();
 
-        if (!newData) {
-            throw { code: 400, message: "there was an error writing the file" }
-        }
+        if (!newData) throw { code: 400, message: "there was an error writing the file" }
 
         return newData;
     },
@@ -24,15 +22,9 @@ const S3 = {
             Key: key,
         };
 
-        console.log("PARAMS", JSON.stringify(params));
+        const data = await s3Client.getObject(params).promise();
 
-        const data = await s3Client.headObject(params).promise();
-
-        console.log("DATA", JSON.stringify(data));
-
-        if (!data) {
-            throw { code: 400, message: "there was an error getting the file" }
-        }
+        if (!data) throw { code: 400, message: "there was an error getting the file" }
 
         return data;
     }
