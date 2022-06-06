@@ -2,12 +2,13 @@ const AWS = require('aws-sdk');
 const s3Client = new AWS.S3();
 
 const S3 = {
-    async write(data, fileName, contentType, bucket) {
+    async write(data, fileName, contentType, bucket, acl = false) {
         const params = {
             Bucket: bucket,
             Body: data,
             Key: fileName,
-            ContentType: contentType
+            ContentType: contentType,
+            ...(acl) ? { ACL: 'public-read' } : {}
         };
 
         const newData = await s3Client.putObject(params).promise();
