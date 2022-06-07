@@ -1,4 +1,4 @@
-const { validateImageAllowed } = require('../../../util/validation');
+const { validateImageAllowed } = require('../../../../generator/util/validation');
 
 describe('Testing util/validation', () => {
     it('Given contentType image/pdf and contengLenght 83206 shouldnt throw error', async () => {
