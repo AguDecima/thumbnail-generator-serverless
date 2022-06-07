@@ -1,40 +1,54 @@
 # PoC: Thumbnail Generator API
 
-## Goal
-Build a simple API that generates thumbnails from a source image
+## Description
+Simple API that generates thumbnails from a source image
 
-## Requirements
-- The API should provide at least 1 endpoint where the user will be able to POST the original image
-- The API must **ONLY** accept PNG and JPEG files
-- The API must reject input file bigger than **5mb**
-- The API should give the user 3 new images with the following dimensions
-  - 400x300
-  - 160x120
-  - 120x120
+## Arquitecture
 
-## Grading Guidelines
+![Alt text](./docs/thumbnail.drawio.png?raw=true "Title")
 
-### MVP (40 points)
-- Every requirement is met
-- The solution runs on our enviroment
-- Tech Stack: Node.js >=8 / Python 3
-- Any ENV specific value should be configurable and documented
-- Everything should work after following a simple README
-- The code should be clear and easy to read / debug
+## Dependencies
 
-### Nice moves (5 points each)
-- It includes **RAML** or **Swagger** documentation 
-- It includes configuration files / scripts for deploying it on **AWS** or **GCP**
-- It's serverless! (either **AWS Lambda + API Gateway** or **GCP Cloud Functions**)
-- It relies on **Serverless Framework** or **SAM**
-- It's Dockerized for local development / testing
-- It leverages cloud services (ie: AWS S3, SNS, SQS, etc...)
-- It's asynchronic
-- It's fast (<~500ms after upload finishes)
-- It includes some kind of testing (unit tests, integration tests, etc) with at least 70% coverage
-- It has an auth implementation (recommended: Auth0)
+* [NodeJs](https://nodejs.org/en/)
+* [AWS Cli](https://aws.amazon.com/es/cli/)
+* [Serverless Framework](https://www.serverless.com/)
 
-### Wait, WHAT?! (10 points each)
-- It includes a configuration file / script to setup a CI/CD process on AWS or GCP
-- It includes three different kinds of tests (unit, integration and performance)
+## How to use
+
+Before running the project please ensure that all the dependencies are installed in your system. Then follow the next:
+
+##### Config Auth0
+
+Create an Auth API and downloads the certificate
+
+#### Adding secreto to secret  manager
+
+Add secret manager your certificate
+
+```sh
+aws secretsmanager create-secret \
+    --name certificate \
+    --secret-string file://mycreds.json
+```
+
+mycreds.json
+```json
+{
+    "value": "---CERTIFICATE---"
+}
+```
+
+or if you prefer you can upload the certificate in the aws console
+
+### Deploy
+
+You can run `./scripts/deploy.sh` but first you need to add permisions with `chmod u+x deploy.sh`
+
+Or you can deploy with serverless commands
+
+```sh
+sls deploy --stage <stage> --verbose
+```
+
+to remove the stack you must run `.scripts/deploy.sh` or `sls remove --stage <stage>`
 
