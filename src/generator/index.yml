@@ -9,6 +9,8 @@ uploadImage:
       - httpApi:
           path: /upload
           method: POST
+          authorizer: 
+            name: customAuthorizer
     iamRoleStatements:
       - Effect: Allow
         Action:

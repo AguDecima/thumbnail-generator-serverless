@@ -1,0 +1,9 @@
+auth:
+    handler: src/authorizer/handler/authorizer.handler
+    name: ${file(resource/index.json):authorizer.authorizerLambdaName}
+    description: 'middleware to validate authentication'
+    iamRoleStatementsInherit: true
+    iamRoleStatementsName: ${self:service}-${self:provider.stage}-authorizer
+    provisionedConcurrency: ${self:custom.provisionedConcurrency.${self:provider.stage}, 0}
+    environment:
+      CERT_VALUE: ${self:custom.secrets.cert.value}

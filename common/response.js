@@ -20,6 +20,9 @@ const Responses = {
     _400(data = {}) {
         return this._DefineResponse(400, data);
     },
+    _403() {
+        return this._DefineResponse(404, { message: "Forbidden"});
+    },
     _404(data = {}) {
         return this._DefineResponse(404, data);
     },

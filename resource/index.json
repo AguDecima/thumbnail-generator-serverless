@@ -6,5 +6,8 @@
         "resizedSourceBucketName":  "${self:custom.stackPrefix}-resized-source",
         "imageUploadedQueueName": "${self:custom.stackPrefix}-image-uploaded",
         "objectCreatedSnsTopic": "${self:custom.stackPrefix}-object-created"
+    }, 
+    "authorizer" : {
+        "authorizerLambdaName": "${self:custom.stackPrefix}-authorizer"
     }
 }
