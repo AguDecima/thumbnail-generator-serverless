@@ -12,7 +12,7 @@ module.exports = async (body, context) => {
       body.filename,
       body.contentType)
 
-    const bucketUrl = `https://${process.env.SOURCE_BUCKET}.s3.amazonaws.com`
+    const bucketUrl = `https://${process.env.RESIZED_SOURCE_BUCKET}.s3.amazonaws.com`
 
     return Responses._200(
       { 

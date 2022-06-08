@@ -18,6 +18,7 @@ uploadImage:
         Resource:
           - !Join [ "/", [!GetAtt OriginSourceBucket.Arn, "*"]]
     environment:
+      RESIZED_SOURCE_BUCKET: !Ref ResizedSourceBucket
       SOURCE_BUCKET: !Ref OriginSourceBucket
 
 resizeImage:
