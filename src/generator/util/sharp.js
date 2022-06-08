@@ -9,7 +9,7 @@ const resizeImage = async (image, { width, height}) => {
         format: image.ContentType.split("/")[1]
     })
 
-    if(!data) throw { code: 400, message: "there was an error getting the file" }
+    if(!data) throw { code: 400, message: "there was an error resizing the file" }
     
     return data
     

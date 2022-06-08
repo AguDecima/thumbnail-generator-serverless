@@ -1,6 +1,6 @@
 const { uploadImage } = require('../service/originSourceService');
 const { validateImageAllowed } = require('../util/validation');
-const { Responses } = require('../../../common/response');
+const { Responses } = require('../../common/response');
 
 module.exports = async (body, context) => {
 

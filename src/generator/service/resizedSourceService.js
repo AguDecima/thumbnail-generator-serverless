@@ -1,4 +1,4 @@
-const { S3 } = require('../../../common/s3')
+const { S3 } = require('../../common/s3')
 
 const RESIZED_SOURCE_BUCKET = process.env.RESIZED_SOURCE_BUCKET
 const SOURCE_BUCKET = process.env.SOURCE_BUCKET;

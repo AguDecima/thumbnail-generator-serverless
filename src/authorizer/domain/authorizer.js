@@ -1,4 +1,3 @@
-const { Responses } = require('../../../common/response');
 const jwt = require('jsonwebtoken');
 const { generatePolicy } = require('../helper/policies');
 
